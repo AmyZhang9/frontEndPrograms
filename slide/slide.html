@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+        <title>轮播图</title>
+        <style>
+            img {
+                /*transition 这个 css 指定了某个属性发生变化的时候自动使用动画效果和动画时间*/
+                transition: width 1s, height 1s;
+            }
+            
+            .gua-slide {
+                position: relative;
+                width: 640px;
+            }
+            .gua-slide-image {
+                display: none;
+            }
+            /*gua-slide-image*/
+            .gua-active {
+                display: inline-block;
+            }
+            .gua-slide-button {
+                width: 30px;
+                height: 50px;
+                text-align: center;
+                line-height: 40px;
+                color: rgba(255, 255, 255, 0.4);
+                background: rgba(0, 0, 0, 0.2);
+                border: 0;
+            }
+            .gua-slide-button:hover {
+                cursor: pointer;
+                color: #fff;
+                background: rgba(0, 0, 0, 0.5);
+            }
+            .gua-left {
+                left: 0;
+            }
+            .gua-right {
+                right: 0;
+            }
+            .gua-vertical-center {
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+            }
+            .gua-slide-indicators {
+                position: absolute;
+                left: 50%;
+                transform: translateX(-50%);
+                bottom: 10px;
+                text-align: center;
+            }
+            .gua-slide-indi {
+                display: inline-block;
+                width: 10px;
+                height: 10px;
+                border-radius: 50%;
+                background: red;
+            }
+            .gua-white {
+                background: white;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- 轮播图 -->
+        <div class="gua-3">
+            <!-- data-imgs 是图片的总数 -->
+            <!-- data-active 是当前显示的图片的下标 -->
+            <div class="gua-slide" data-imgs="3" data-active="0">
+                <img id="id-guaimage-0" class="gua-slide-image gua-active" src="slideimages/1.jpg" alt="">
+                <img id="id-guaimage-1" class="gua-slide-image" src="slideimages/2.jpg" alt="">
+                <img id="id-guaimage-2" class="gua-slide-image" src="slideimages/3.jpg" alt="">
+                <!--
+                实际上在 HTML 中, 表示 < > 这些特殊符号的时候, 必须使用 HTML 转义符号
+                比如 &gt; 表示 >, &lt; 表示 <
+                -->
+                <button class="gua-slide-button gua-left gua-vertical-center" data-offset="-1">&lt;</button>
+                <button class="gua-slide-button gua-right gua-vertical-center" data-offset="1">&gt;</button>
+                <div class="gua-slide-indicators">
+                    <div id="id-indicator-0" class="gua-slide-indi gua-white" data-index="0"></div>
+                    <div id="id-indicator-1" class="gua-slide-indi" data-index="1"></div>
+                    <div id="id-indicator-2" class="gua-slide-indi" data-index="2"></div>
+                </div>
+            </div>
+        </div>
+        <script src="slide.js"></script>
+    </body>
+</html>

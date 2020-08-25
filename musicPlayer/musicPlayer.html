@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>musicPalyer</title>
+  <link rel="stylesheet" href="font-awesome-4.7.0/css/font-awesome.css">
+  <link rel="stylesheet" href="musicPlayer.css">
+
+</head>
+
+<body>
+  <!-- 页面布局 -->
+  <audio id="id-audio-player" src="musicInfor/Final Masquerade_Linkin Park_128K.mp3" class='order'></audio>
+  <div class="wrapper">
+    <div class="player__container">
+      <div class="player__body">
+        <div class="body__cover" onselectstart="return false">
+          <!-- onselectstart="return false"非常有用，可以禁止元素被选择，元素因此不会变蓝 -->
+          <ul class="list list--cover">
+            <li>
+              <a class="list__link" href=""><i class="fa fa-navicon"></i></a>
+            </li>
+
+            <li>
+              <a class="list__link" href=""></a>
+            </li>
+
+            <li>
+              <!-- 搜索符号 -->
+              <a class="list__link" href=""><i class="fa fa-search"></i></a>
+            </li>
+          </ul>
+          <!-- 与音乐相关的图片，需要随着音乐修改 -->
+          <img src="musicInfor/linken.jpg" alt="Album cover" id='id-img-albumCover' onselectstart="return false" />
+
+          <span class='gua-span-left' id="id-span-duration">00:00</span>
+          <span class='gua-span-right' id="id-span-currentime">00:00</span>
+          <div class="outer">
+            <div class='bar_dot'></div>
+            <div class='inner'></div>
+          </div>
+
+        </div>
+
+        <!-- 音乐的专辑名，歌曲名，作曲家名 -->
+        <div class="body__info">
+          <div class="info__album">The Hunting Party</div>
+
+          <div class="info__song">Final Masquerade</div>
+
+          <div class="info__artist">Linkin Park</div>
+        </div>
+
+        <!-- 按钮：上一首，播放，下一首-->
+        <div class="body__buttons">
+          <ul class="list list--buttons">
+            <li><a href="#" class="list__link"><i class="fa fa-step-backward"></i></a></li>
+
+            <li><a href="#" class="list__link"><i class="fa fa-play" id='id-i-play'></i></a></li>
+
+            <li><a href="#" class="list__link"><i class="fa fa-step-forward"></i></a></li>
+          </ul>
+        </div>
+      </div>
+
+      <!-- <span class='gua-span-left' id="id-span-duration">00:00</span>
+           <span class='gua-span-right' id="id-span-currentime">00:00</span>
+            <div class="outer">
+            <div class='bar_dot'></div>
+            <div class='inner'></div> -->
+
+      <!-- 按钮：喜爱，随机，单曲循环，省略号-->
+      <div class="player__footer">
+        <ul class="list list--footer">
+          <li><a href="#" class="list__link"><i class="fa fa-heart-o"></i></a></li>
+          <li><a href="#" class="list__link"><i class="fa fa-random"></i></a></li>
+          <li><a href="#" class="list__link"><i class="fa fa-undo"></i></a></li>
+          <li><a href="#" class="list__link"><i class="fa fa-ellipsis-h"></i></a></li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <script src='musicPlayer.js'></script>
+</body>
+
+</html>

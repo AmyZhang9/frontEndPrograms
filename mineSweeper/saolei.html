@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <link rel='stylesheet' href='font_4brqefaos6k/iconfont.css'>
+    <title>扫雷</title>
+    <style>
+        div {
+            margin: 0px;
+            border: 0px;
+            padding: 0px;
+            overflow: hidden;
+            font-size: 0;
+        }
+
+        .all {
+            width:400px;
+            height:400px;
+            /*margin:300px auto;*/
+            border: 4px solid pink;
+            background-color: cyan;
+
+        }
+
+        /* 10*10, 10个雷 */
+        .first {
+            width: 400px;
+            height: 400px;
+        }
+
+        /* 12*12, 15个雷 */
+        .second {
+            width: 480px;
+            height: 480px;
+        }
+
+        /* 15*15，25个雷 */
+        .third {
+            width: 600px;
+            height: 600px;
+        }
+
+        /* 初级 10*10 10雷 */
+        .little {
+            display: relative;
+            display: inline-block;
+            width: 34px;
+            height: 34px;
+            margin: 2px;
+            border: 1px solid white;
+            color: white;
+            text-align: center;
+            font-size: 30px;
+        }
+
+        /* .little:hover{
+                background-color:white;
+            } */
+
+        .clicked {
+            background-color: pink;
+        }
+
+        .red {
+            color: red;
+        }
+
+        .gene {
+            width: auto;
+            height: 30px;
+            font-family: 微软雅黑;
+            font-size: 20px;
+            color: white;
+            background-color: rgba(74, 233, 172, 0.8);
+            border: none;
+            border-radius: 5px;
+            margin: 10px;
+
+        }
+
+        .gene:hover {
+            background-color: rgba(204, 58, 172, 1);
+        }
+
+        .gene2 {
+            display: inline-block;
+            /* width: 100px; */
+            height: 30px;
+            font-family: 微软雅黑;
+            font-size: 20px;
+            color: black;
+            font-size: 20px;
+            margin: 10px;
+            /* border:1px solid black; */
+        }
+
+        .gene3 {
+            color: rgb(10, 155, 240);
+            margin-right:100px;
+        }
+
+        .active {
+            background-color: rgba(204, 58, 172, 1);
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <p id='id-p-statue' data-level=0 data-statue='over'>
+            <span class='gene2'>游戏等级</span>
+            <select class='gene' id='id-select-level'>
+                <option value='first'>初级</option>
+                <option value='second'>中级</option>
+                <option value='third'>高级</option>
+            </select>
+            <button class='gene' id='id-button-restart'>重新开始</button>
+        </p>
+    </div>
+
+    <div class='all'>
+        <!-- <div class='little' data-index=>1</div> -->
+        <!-- 一个组 -->
+    </div>
+
+
+    <div>
+        <span class='gene2'>剩余雷数:</span>
+        <span class='gene2 gene3' id='id-span-residue'>10</span>
+        <span class='gene2'>time:</span>
+        <span class='gene2 gene3' id='id-span-resttime'>0 s</span>
+    </div>
+
+    <script src='saolei.js'></script>
+</body>
+
+</html>

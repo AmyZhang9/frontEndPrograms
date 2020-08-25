@@ -1,0 +1,32 @@
+@font-face {font-family: "iconfont";
+  src: url('iconfont.eot?t=1598085119543'); /* IE9 */
+  src: url('iconfont.eot?t=1598085119543#iefix') format('embedded-opentype'), /* IE6-IE8 */
+  url('data:application/x-font-woff2;charset=utf-8;base64,d09GMgABAAAAAAN4AAsAAAAAB3gAAAMrAAEAAAAAAAAAAAAAAAAAAAAAAAAAAAAAHEIGVgCDHAqCNIIdATYCJAMQCwoABCAFhG0HRhuNBsgeB24s2euQjV0GD/xv6p8rySiZC1PxigHJ4pRONJ25PjX9buMA4/NLQPD/hWPqUzxnf7tENVVSN+DBrgfrxFPjgX+QC/oH3UVMjPhWpyEAk8Z0QIwYNWEGBhowSQAiFnELMCwnGp1EDATBkZUasZMAhtwkXwN28O+LX+kmDJAEFGDmFGdkMUN+0D+sU5lyZFME/PMsQLIOFNAB0CDCo7ZClAx2QGFW/TW9AAMDCWd1mT+sKz8wwIu58C8PJAIFIgiIrQhAjyCk4AeNyZDwg0mGgB/WxaAAPsh4AwgC84DSANtQKuF7ZTXNUpVrF519LPP4lifLnpj/hrl5wsWbdQ99WOfIjTpXtrxOpu7e925SL1R2ov+Hz4qyos37RWCszux1C+WysxcJZi5tudKgwuHLreIvfADo3nuvj3z0ww/fZ5O+/dVD7404ZzKzH05deD4ve3behU8rO/DrV1ljPr0wvWGT2u9szhn/W2cjv8PfDYb0XNl8CPcGhT4PjWrYNvR71s2O17Ix1mRwq1+uHm4WFpeFS+Hs/Ow6w1r5qTGym9f4ukZ2MyHs5Las8U3N7BZTSIV7yJfkAwD5qjwB5dTJBCN+suPaBzXzqgz43whpAD51mmeV06gMuCt/Nf8H8Fc26VoI9FqXIsxrHJp2uydIwMQEnD0K1fniDEWt1X4QGBY/AUkFGoHCoAVSYztAgBA9IIjBYDBpz+j1IWrgoRA6C2jHOg8EVbkBkso8CYqqvI7U2M8hQG1+hyBVhQKTWaLGjiFaiYg53LMLfLvYKlxiRYqSCQcZfVPET7Pd0liBZwo5bpbtlUQ8VtdOXbqR0XbC9s6YU7LQ7eb7juV4ybg1yjvPjsWSVspLLrCL/E5h30/169zZGbtSp6JkHJPheNgU4GNTjEUhS7CIUESSBA7t7GP2Pj8NG5dSYhTgzZStWGdh41FCpHeLrnSiywrkaFliVdm3XFLCQly64ePjYOHgkSSOxShvmE2MGEksUuPDFmBThE8nwjv8KfrRGbZz1so63a+IOyA3qQLsqIUUSmgRILjIToQLkkG/tDDCNOZikhZOJtx0BAAA') format('woff2'),
+  url('iconfont.woff?t=1598085119543') format('woff'),
+  url('iconfont.ttf?t=1598085119543') format('truetype'), /* chrome, firefox, opera, Safari, Android, iOS 4.2+ */
+  url('iconfont.svg?t=1598085119543#iconfont') format('svg'); /* iOS 4.1- */
+}
+
+.iconfont {
+  font-family: "iconfont" !important;
+  font-size: 16px;
+  font-style: normal;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-wenhao:before {
+  content: "\e60a";
+  color:red;
+}
+
+.icon-tubiao:before {
+  content: "\e604";
+  color:red;
+}
+
+.icon-xiaohongqi:before {
+  content: "\e685";
+  color:red;
+}
+
