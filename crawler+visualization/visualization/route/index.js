@@ -4,7 +4,7 @@ const sendHtml = (path, response) => {
     let options = {
         encoding: 'utf-8'
     }
-    path = 'static/' + path
+    path = 'template/' + path
     fs.readFile(path, options, (err, data) => {
         console.log(`读取的html文件 ${path} 内容是`, data)
         response.send(data)
