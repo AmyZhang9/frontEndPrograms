@@ -94,20 +94,17 @@ var showDuration = function (audio) {
     s.innerHTML = secondToTimeForm(time)
 }
 
-//当歌曲播放时，需要定时的调节歌曲的当前已播放时间，进度条的已播放部分，点的位置
+//当歌曲播放时间改变时，需要定时的调节歌曲的当前已播放时间显示，进度条的已播放部分，点的位置
 //范围interval 
-var timeIntervalChangeModule = function (audio) {
-    var interval = 500
-    var number = setInterval(function () {
+function bindEventTimeupdate(audio) {
+    audio.ontimeupdate = function(){
         //显示当前已经播放的时间
         showCurrentTime(audio)
         //调整进度条的位置
         let length = getProgress(audio)
         changeProgressBar(length)
-    }, interval)
-    return number
+    }
 }
-
 
 //获取进度条已完成部分的长度
 var getProgress = function (audio) {
@@ -195,12 +192,6 @@ var bindEventEnded = function (audio) {
     })
 }
 
-//intervalNum用于标记定时器的标志，
-/*
-    开启定时器的时间：1. 音乐播放器处于播放状态时
-                     2. 点击了上一曲，下一曲的时候同时此前的播放器状态处于暂停
-*/
-var intervalNum = 0
 
 //绑定播放/暂停按钮，切换播放暂停状态
 var bindEventPlay = function (audio) {
@@ -212,13 +203,11 @@ var bindEventPlay = function (audio) {
             audio.play()
             b.classList.remove('fa-play')
             b.classList.add('fa-pause')
-            intervalNum = timeIntervalChangeModule(audio)
         } else if (b.classList.contains('fa-pause')) {
             log('pause')
             audio.pause()
             b.classList.remove('fa-pause')
             b.classList.add('fa-play')
-            clearInterval(intervalNum)
         }
     })
 }
@@ -236,7 +225,6 @@ var bindEventStepBackward = function (audio) {
             // audio.play()
             play.classList.remove('fa-play')
             play.classList.add('fa-pause')
-            intervalNum = timeIntervalChangeModule(audio)
         }
     })
 }
@@ -254,7 +242,6 @@ var bindEventStepForward = function (audio) {
             // audio.play()
             play.classList.remove('fa-play')
             play.classList.add('fa-pause')
-            intervalNum = timeIntervalChangeModule(audio)
         }
     })
 }
@@ -322,14 +309,6 @@ var bindEventUndo = function (audio) {
     })
 }
 
-//给进度条绑定点击事件
-var bindEventBar = function (audio) {
-    var outer = e('.outer')
-    outer.addEventListener('click', function (event) {
-        var inner = e('.inner')
-
-    })
-}
 
 //获取元素距离浏览器边界长度
 var getOffsetLeft = function (obj) {
@@ -342,11 +321,13 @@ var getOffsetLeft = function (obj) {
     return tmp;
 }
 
+
 var bindEventClickBar = function (audio) {
     var outer = e('.outer')
     var max = 14 * 16
     outer.addEventListener('click', function (event) {
         var offset = getOffsetLeft(outer)
+        //getOffsetLeft我是想要获取点击点相对于进度条的开始的距离，可以直接使用offsetX,这样得到的距离和length之间差一个像素，不知道为何
         var len = event.clientX - offset
         length = len + 'px'
         changeProgressBar(length)
@@ -354,7 +335,6 @@ var bindEventClickBar = function (audio) {
         showCurrentTime(audio)
     })
 }
-
 
 //给进度条的dot绑定事件
 var bindEventBar = function (audio) {
@@ -366,19 +346,26 @@ var bindEventBar = function (audio) {
     //offset为outer边到浏览器边界的距离
     var offset = 0
     var moving = false
+    var len = null
     dot.addEventListener('mousedown', function (event) {
         //获取outer与浏览器边的距离
         offset = event.clientX - dot.offsetLeft
         moving = true
+        audio.ontimeupdate = null
     })
 
     document.addEventListener('mouseup', function (event) {
+        if (moving) {
+            audio.currentTime = parseInt(len / max * audio.duration)
+            showCurrentTime(audio) 
+            bindEventTimeupdate(audio)
+        }
         moving = false
     })
     //dot随鼠标移动的响应函数
     document.addEventListener('mousemove', function (event) {
         if (moving) {
-            var len = event.clientX - offset
+            len = event.clientX - offset
             if (len < 0) {
                 len = 0
             }
@@ -388,8 +375,6 @@ var bindEventBar = function (audio) {
             length = len + 'px'
             dot.style.left = length
             inner.style.width = length
-            audio.currentTime = parseInt(len / max * audio.duration)
-            showCurrentTime(audio)
         }
     })
 }
@@ -399,6 +384,7 @@ var __main = function () {
     var audio = e('#id-audio-player')
     guaranteeAllTime(audio)
     bindEventPlay(audio)
+    bindEventTimeupdate(audio)
     bindEventCanplay(audio)
     bindEventEnded(audio)
     bindEventStepBackward(audio)
